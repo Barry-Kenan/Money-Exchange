@@ -1,0 +1,9 @@
+@use '@/shared/styles' as *;
+
+.footer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 50px;
+	background-color: $background;
+}

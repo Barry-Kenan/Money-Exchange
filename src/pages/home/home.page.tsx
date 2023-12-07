@@ -1,3 +1,4 @@
+import { withLayout } from '@/widgets';
 import { Button } from '@mui/material';
 import { FC } from 'react';
 
@@ -11,4 +12,4 @@ const HomePage: FC = () => {
 	);
 };
 
-export default HomePage;
+export default withLayout(HomePage);

@@ -1,0 +1,24 @@
+.wrapper {
+	display: grid;
+	grid-template:
+		'header header header' auto
+		'. body .' 1fr
+		'footer footer footer' auto
+		/ auto minmax(320px, 1200px) auto;
+	min-height: 100dvh;
+
+	.header {
+		grid-area: header;
+		min-height: 50px;
+	}
+
+	.body {
+		grid-area: body;
+		overflow: hidden auto;
+	}
+
+	.footer {
+		grid-area: footer;
+		min-height: 50px;
+	}
+}
