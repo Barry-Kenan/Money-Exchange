@@ -2,9 +2,11 @@ import { DirectionFormSelect } from '@/entities';
 import { DirectionParamsEnum } from '@/shared/enums';
 import { IDirectionReq } from '@/shared/interface';
 import { useExchangeStore } from '@/shared/model';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { Button } from '@mui/material';
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import styles from './DirectionForm.module.scss';
 
 export const DirectionForm: FC = () => {
 	const {
@@ -15,11 +17,11 @@ export const DirectionForm: FC = () => {
 		formState: { isValid }
 	} = useForm<IDirectionReq>();
 	const { getDirectionList } = useExchangeStore();
+	const [isClicked, setIsClicked] = useState<boolean>(false);
 
 	const onSubmit = (formData: IDirectionReq) => {
 		getDirectionList(formData);
-		// eslint-disable-next-line no-console
-		console.log(formData);
+		setIsClicked(true);
 	};
 
 	const voluteFrom = watch(DirectionParamsEnum.VoluteFrom);
@@ -27,10 +29,11 @@ export const DirectionForm: FC = () => {
 		if (voluteFrom === '') {
 			resetField(DirectionParamsEnum.VoluteTo);
 		}
+		setIsClicked(false);
 	}, [voluteFrom]);
 
 	return (
-		<form onSubmit={handleSubmit(onSubmit)}>
+		<form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
 			<DirectionFormSelect
 				name={DirectionParamsEnum.VoluteFrom}
 				label='Отдаете'
@@ -46,7 +49,12 @@ export const DirectionForm: FC = () => {
 				watchValue={watch(DirectionParamsEnum.VoluteFrom)}
 				isSelectDisabled={!watch(DirectionParamsEnum.VoluteFrom)}
 			/>
-			{isValid && <Button type='submit'>Получить список обменников</Button>}
+			{isValid && !isClicked && (
+				<Button type='submit' color='secondary' className={styles.submitButton}>
+					Далее
+					<NavigateNextIcon />
+				</Button>
+			)}
 		</form>
 	);
 };
