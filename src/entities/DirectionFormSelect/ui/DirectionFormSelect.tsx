@@ -1,6 +1,7 @@
 import { ReactHookFormSelect } from '@/shared';
 import { MenuItem } from '@mui/material';
 import { FC } from 'react';
+import { Control, FieldValues } from 'react-hook-form';
 import { menuItems } from '../consts';
 import { DirectionFormSelectProps } from './DirectionFormSelect.props';
 
@@ -16,7 +17,7 @@ export const DirectionFormSelect: FC<DirectionFormSelectProps> = ({
 		<ReactHookFormSelect
 			name={name}
 			label={label}
-			control={control}
+			control={control as Control<FieldValues> | undefined}
 			defaultValue={defaultValue}
 			fullWidth
 			disabled={isSelectDisabled ?? false}

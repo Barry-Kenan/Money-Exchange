@@ -8,7 +8,7 @@ import { DirectionCardProps } from './DirectionCard.props';
 
 export const DirectionCard: FC<DirectionCardProps> = ({ direction }) => {
 	return (
-		<Card className={styles.card} component={motion.div} whileHover={{ scale: 1.1 }}>
+		<Card className={styles.card} component={motion.div} whileHover={{ scale: 1.1 }} layout>
 			<Typography gutterBottom variant='h5' component='div'>
 				{direction.name}
 			</Typography>

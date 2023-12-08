@@ -1,20 +1,24 @@
 @use '@/shared/styles' as *;
 
-.form {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 10px;
-	place-content: center;
-	padding: 15px;
+.wrapper {
+	padding: 10px;
+	text-align: center;
 	background-color: $background;
-	border-radius: $radius;
 
-	& > div {
-		max-width: 300px;
-	}
+	.form {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+		place-content: center;
+		border-radius: $radius;
 
-	.submitButton {
-		width: 100px;
+		& > div {
+			max-width: 300px;
+		}
+
+		.submitButton {
+			width: 100px;
+		}
 	}
 }
 

@@ -1,4 +1,9 @@
-.wrapper {
+.sort {
+	display: flex;
+	justify-content: right;
+}
+
+.cards {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 10px;

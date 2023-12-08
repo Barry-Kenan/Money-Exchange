@@ -33,28 +33,31 @@ export const DirectionForm: FC = () => {
 	}, [voluteFrom]);
 
 	return (
-		<form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-			<DirectionFormSelect
-				name={DirectionParamsEnum.VoluteFrom}
-				label='Отдаете'
-				control={control}
-				defaultValue=''
-				watchValue={watch(DirectionParamsEnum.VoluteTo)}
-			/>
-			<DirectionFormSelect
-				name={DirectionParamsEnum.VoluteTo}
-				label='Получаете'
-				control={control}
-				defaultValue=''
-				watchValue={watch(DirectionParamsEnum.VoluteFrom)}
-				isSelectDisabled={!watch(DirectionParamsEnum.VoluteFrom)}
-			/>
-			{isValid && !isClicked && (
-				<Button type='submit' color='secondary' className={styles.submitButton}>
-					Далее
-					<NavigateNextIcon />
-				</Button>
-			)}
+		<form onSubmit={handleSubmit(onSubmit)} className={styles.wrapper}>
+			<h3>Выберите валюты</h3>
+			<div className={styles.form}>
+				<DirectionFormSelect
+					name={DirectionParamsEnum.VoluteFrom}
+					label='Отдаете'
+					control={control}
+					defaultValue=''
+					watchValue={watch(DirectionParamsEnum.VoluteTo)}
+				/>
+				<DirectionFormSelect
+					name={DirectionParamsEnum.VoluteTo}
+					label='Получаете'
+					control={control}
+					defaultValue=''
+					watchValue={watch(DirectionParamsEnum.VoluteFrom)}
+					isSelectDisabled={!watch(DirectionParamsEnum.VoluteFrom)}
+				/>
+				{isValid && !isClicked && (
+					<Button type='submit' color='secondary' className={styles.submitButton}>
+						Далее
+						<NavigateNextIcon />
+					</Button>
+				)}
+			</div>
 		</form>
 	);
 };

@@ -6,7 +6,7 @@ import { IDirection, IDirectionReq } from '../interface';
 interface IExchangeStore {
 	directionList: IDirection[];
 	getDirectionList: (data: IDirectionReq) => void;
-	clearDirectionList: () => void;
+	setDirectionList: (data: IDirection[]) => void;
 	error: string;
 	loading: boolean;
 	clearError: () => void;
@@ -29,13 +29,13 @@ export const useExchangeStore = create<IExchangeStore>()(
 				set(() => ({ loading: false }), false, 'setLoading');
 			}
 		},
-		clearDirectionList: () => {
+		setDirectionList: (data: IDirection[]) => {
 			set(
 				() => ({
-					directionList: []
+					directionList: data
 				}),
 				false,
-				'clearDirectionList'
+				'setDirectionList'
 			);
 		},
 		clearError: () => {
