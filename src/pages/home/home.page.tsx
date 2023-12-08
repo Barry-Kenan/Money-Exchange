@@ -1,19 +1,41 @@
 import { DirectionForm } from '@/features';
+import { Loading, Up } from '@/shared';
 import { useExchangeStore } from '@/shared/model';
-import { withLayout } from '@/widgets';
-import { FC } from 'react';
+import { DirectionCards, withLayout } from '@/widgets';
+import { Alert, Snackbar } from '@mui/material';
+import { FC, useEffect, useState } from 'react';
+import styles from './home.page.module.scss';
 
 const HomePage: FC = () => {
-	const { directionList } = useExchangeStore();
+	const { error, clearError, loading } = useExchangeStore();
+	const [openError, setOpenError] = useState(false);
+
+	useEffect(() => {
+		if (error != '') {
+			setOpenError(true);
+		}
+	}, [error]);
+
+	const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+		if (reason === 'clickaway') {
+			return;
+		}
+
+		setOpenError(false);
+		clearError();
+	};
+
 	return (
-		<>
+		<div className={styles.wrapper}>
 			<DirectionForm />
-			<ul>
-				{directionList.map((e) => (
-					<li key={e.id}>{e.name}</li>
-				))}
-			</ul>
-		</>
+			{loading ? <Loading /> : <DirectionCards />}
+			<Up />
+			<Snackbar open={openError} autoHideDuration={6000} onClose={handleClose}>
+				<Alert onClose={handleClose} severity='error' sx={{ width: '100%' }}>
+					{error}
+				</Alert>
+			</Snackbar>
+		</div>
 	);
 };
 
