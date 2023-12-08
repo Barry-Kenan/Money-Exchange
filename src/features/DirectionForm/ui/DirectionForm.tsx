@@ -1,5 +1,7 @@
 import { DirectionFormSelect } from '@/entities';
 import { DirectionParamsEnum } from '@/shared/enums';
+import { IDirectionReq } from '@/shared/interface';
+import { useExchangeStore } from '@/shared/model';
 import { Button } from '@mui/material';
 import { FC, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
@@ -11,9 +13,11 @@ export const DirectionForm: FC = () => {
 		watch,
 		resetField,
 		formState: { isValid }
-	} = useForm();
+	} = useForm<IDirectionReq>();
+	const { getDirectionList } = useExchangeStore();
 
-	const onSubmit = (formData: unknown) => {
+	const onSubmit = (formData: IDirectionReq) => {
+		getDirectionList(formData);
 		// eslint-disable-next-line no-console
 		console.log(formData);
 	};

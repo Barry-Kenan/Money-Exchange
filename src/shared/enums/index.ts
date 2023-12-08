@@ -1,6 +1,6 @@
 export enum DirectionParamsEnum {
-	VoluteFrom = 'volute_from',
-	VoluteTo = 'volute_to'
+	VoluteFrom = 'valute_from',
+	VoluteTo = 'valute_to'
 }
 
 export enum VoluteEnum {
