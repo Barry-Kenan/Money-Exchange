@@ -30,7 +30,12 @@ const HomePage: FC = () => {
 			<DirectionForm />
 			{loading ? <Loading /> : <DirectionCards />}
 			<Up />
-			<Snackbar open={openError} autoHideDuration={6000} onClose={handleClose}>
+			<Snackbar
+				anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+				open={openError}
+				autoHideDuration={6000}
+				onClose={handleClose}
+			>
 				<Alert onClose={handleClose} severity='error' sx={{ width: '100%' }}>
 					{error}
 				</Alert>

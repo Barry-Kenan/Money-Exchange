@@ -24,6 +24,7 @@ export const useExchangeStore = create<IExchangeStore>()(
 				set(() => ({ directionList: response }), false, 'getDirectionList');
 			} catch (err) {
 				set(() => ({ error: (err as Error).message }), false, 'setError');
+				set(() => ({ directionList: [] }), false, 'getDirectionList');
 			} finally {
 				set(() => ({ loading: false }), false, 'setLoading');
 			}
