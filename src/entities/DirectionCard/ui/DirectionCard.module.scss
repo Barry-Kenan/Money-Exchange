@@ -1,0 +1,22 @@
+.card {
+	padding: 10px;
+	text-align: center;
+
+	.cardContent {
+		display: flex;
+		gap: 10px;
+		justify-content: center;
+
+		.price {
+			span {
+				margin-left: 5px;
+				font-size: small;
+			}
+		}
+	}
+
+	.cardActions {
+		display: flex;
+		justify-content: center;
+	}
+}
